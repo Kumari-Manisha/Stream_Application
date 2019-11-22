@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<style>
+  	 i[disabled]{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+hr{
+	border-top-color:black !important;
+}
+header .container{
+	overflow : hidden;
+}
+.hidecomponent{
+	display:none;
+}
+.logo,.logodetails{
+	margin-right:.2em;
+	float:left;
+}
+.headerright{
+	float:right;
+}
+.logodetails{
+	margin-top: 1.3em;
+}
+.toolname{
+	margin-top: -0.7em
+}
+.controls{
+	clear:both;
+}
+.childimg{
+	height:112px;
+}
+.audioplayercard{
+	width:100%;
+}
+.recordButton,.stopButton{
+	margin-right:.8em ;
+	margin-top:1em;
+}
+  </style>
+    <meta charset="UTF-8">
+    <title>Nepali Detector </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="" crossorigin="anonymous">
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b2717dea1.js" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+
+<!-- header implementation-->
+
+<header class="bg py-2 mb-4">
+  <div class="container">
+   	<div class="headerleft">
+  		<i class="fas fa-globe fa-7x logo"></i>
+  			<div class="logodetails">
+    			<h1 class="font-weight-light text-black">Stream (beta)</h1>
+    			<div class="toolname"><span>Language Identifier Tool</span></div>
+    		</div>
+	</div>
+	<div class="headerright">
+		<img class="childimg" src="../static/img/child.jpg"/>
+	</div>
+   </div>
+</header>
+<hr/>
+<div class="container">
+	<div class="row">
+		<!--column 1-->
+		<div class="col-md-4 mb-4">
+			<div class="card">
+  			<h5 class="card-title card-header"><span><i class="fas fa-angle-left fa-sm"></i>Speech</span><span></span> <span>Record</span></h5>
+  			<div class="card-body">
+    			<div class="card-body align-items-center justify-content-center">
+    				<div class="audioplayercard">
+    					<audio controls id="audioplayer">
+						   
+						Your browser does not support the audio element.
+						</audio>
+    				</div>
+        			<div id="controls" class="card-body d-flex controls justify-content-center">
+						<div>
+							<i id="recordButton"  class="fas fa-record-vinyl fa-3x recordButton" role="button"></i>
+							<i id="stopButton"  class="fas fa-play-circle fa-3x stopButton" disabled role="button"></i>
+						</div>	
+			 		</div>
+      		   </div>
+    		</div>
+		</div>
+		</div>
+		<!--column 2-->
+		<div class="col-md-4 mb-12">
+			<div class="card">
+  			<!-- <h5 class="card-title card-header"><span><i class="fas fa-angle-left fa-sm"></i>Speech</span> <span>Record</span></h5> -->
+  			<div class="card-body">
+    			<div class="card-body align-items-center justify-content-center">
+    				<div class="audiovisualization">
+    					 <div id="waveform"></div>
+    				</div>
+      		   </div>
+    		</div>
+		</div>
+		</div>
+		<!--column 2-->
+		<div class="col-md-3 mb-4">
+		</div>
+	</div>
+</div>
+
+	<p class="hidecomponent">Convert recorded audio to:<br>
+	<select id="encodingTypeSelect">
+	  <option value="wav">Waveform Audio (.wav)</option>
+	  <option value="mp3">MP3 (MPEG-1 Audio Layer III) (.mp3)</option>
+	  <option value="ogg">Ogg Vorbis (.ogg)</option>
+	</select>
+	</p>
+	 
+	
+	<div id="formats"></div>
+	<h3 class="hidecomponent">Log</h3>
+	<pre id="log" class="hidecomponent"></pre>
+
+	<h3 class="hidecomponent">Recordings</h3>
+	<ol id="recordingsList"></ol>
+    <div id = "serverdata">
+    	<form method="post" action="/save-record" id="audioform"></form>
+    </div>
+  	<!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+  	
+	<script src="../static/js/WebAudioRecorder.min.js"></script>
+	<script src="https://unpkg.com/wavesurfer.js"></script>
+	<script src="../static/js/app.js"></script> 
+  </body>
+</html>
