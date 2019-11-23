@@ -14,12 +14,8 @@ def allowed_file(filename):
 def index():
     return render_template('index.html') 
 
-#@app.route('/detectlang', methods=['POST'])               
-#def detectlang():
-#    console.log("detectlang")
-#    return "Hello It's Nepali"
 
-@app.route('/save-record', methods=['GET', 'POST'])
+@app.route('/save-record', methods=['POST'])
 def save_record():
 	if request.method == 'POST':
         # check if the post request has the file part
@@ -38,7 +34,7 @@ def save_record():
 		else:
 			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif, wav')
 			return redirect(request.url)
-	return "works"
+	return "Hello!!"
 
 if __name__ == "__main__":       
     app.run()  

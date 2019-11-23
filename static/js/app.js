@@ -31,23 +31,13 @@
 	
 	function startRecording() {
 		console.log("startRecording() called");
-		/*
-			Simple constraints object, for more advanced features see
-			https://addpipe.com/blog/audio-constraints-getusermedia/
-		*/
+		
 		var constraints = { audio: true, video: false }
-		/*
-			We're using the standard promise based getUserMedia() 
-			https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-		*/
+		
 		navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
 			__log("getUserMedia() success, stream created, initializing WebAudioRecorder...");
 
-			/*
-				create an audio context after getUserMedia is called
-				sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
-				the sampleRate defaults to the one set in your OS for your playback device
-			*/
+		
 			audioContext = new AudioContext();
 
 			//update the format 
@@ -60,7 +50,7 @@
 			input = audioContext.createMediaStreamSource(stream);
 
 			//stop the input from playing back through the speakers
-			//input.connect(audioContext.destination)
+			
 
 			//get the encoding 
 			encodingType = encodingTypeSelect.options[encodingTypeSelect.selectedIndex].value;
@@ -143,14 +133,11 @@
 	
 		//link the a element to the blob
 		link.href = url;
+		console.log("link.href called"+ link);
 		link.download = new Date().toISOString() + '.'+ encoding;
-		// **************************
-		// Save file to userRecordingFiles
-		// POST blob to server
-		// Create file entry
-		// **************************
-		//link.innerHTML = link.download;
-		//recordingBlob = blob;
+	
+		link.innerHTML = link.download;
+		recordingBlob = blob;
 		//var save = function() {
 		/*console.log("Save function called")
 		var form = new formData();
@@ -169,11 +156,12 @@
 		//};
 
 		//add the new audio and a elements to the li element
-		//li.appendChild(au);
+	
 		li.appendChild(link);
 		wavesurfer.loadBlob(blob);
 		//add the li element to the ordered list
 		recordingsList.appendChild(li);
+		
 	}
 	
 	function registerServerListener(){
