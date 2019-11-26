@@ -162,6 +162,7 @@
 		//add the li element to the ordered list
 		recordingsList.appendChild(li);
 		
+		
 	}
 	
 	function registerServerListener(){
@@ -173,7 +174,7 @@
 	
 		if (recordingBlob) {
 			var recording = new Blob([recordingBlob], { type: "audio/wav" });
-			formData.append("recording", recording);
+			formData.append("file", recording, "lastRecorded");
 		}
 		
 		$.ajaxSetup({
@@ -190,14 +191,13 @@
 			processData: false,
 			contentType: false,
 			success: function(response) {
-							if (response === 'success') {
-								alert('successfully uploaded recorded blob');
-								console.log('Successfully Uploaded Recorded Blob');
-							} else
-							{
+								$("#langresult p").text(response);
+                            console.log('Successfully Uploaded Recorded Blob');
+							},
+            failure: function(response) { 
+								console.log(response);
 								alert(response); // error/failure
 							}
-						}
 			//etc
 		});
 	});

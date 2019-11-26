@@ -76,6 +76,18 @@
 		</div>
 		<!--column 2-->
 		<div class="col-md-3 mb-4">
+		<div class="card">
+                    <h5 class="card-title card-header"><span><i class="fas fa-angle-left fa-sm"></i>Result</span> <span>Record</span></h5>
+                    <div class="card-body">
+                        <div class="card-body align-items-center justify-content-center">
+                            <div id="langresult" class="result">
+                                <p class="text-light bg-dark"></p>
+                                <p class="text-light bg-dark"></p>
+                                <p class="text-light bg-dark"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 		</div>
 	</div>
 </div>
@@ -89,12 +101,12 @@
 	</p>
 	 
 	
-	<div id="formats"></div>
+	<div id="formats" class="hidecomponent"></div>
 	<h3 class="hidecomponent">Log</h3>
 	<pre id="log" class="hidecomponent"></pre>
 
 	<h3 class="hidecomponent">Recordings</h3>
-	<ol id="recordingsList"></ol>
+	<ol id="recordingsList" class="hidecomponent"></ol>
     <div id = "serverdata">
     	<form method="POST" action="/save-record" id="audioform"></form>
     </div>
