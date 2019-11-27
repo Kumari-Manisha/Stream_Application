@@ -13,7 +13,7 @@ import sys
 import scipy.io.wavfile
 from xgboost import XGBClassifier
 import pickle
-from app import app
+from flask_app import app
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
 import soundfile as sf
